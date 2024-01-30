@@ -1,16 +1,17 @@
 #include <iostream>
 #include <array>
 
-int moment_func (int arm, int weight) {
+double moment_func (int arm, int weight) {
     // Function that determines the moment of a given part of the plane.
-    int moment = 0;
+    double moment = 0;
     moment = arm*weight;
+    return moment;
 }
 
 int main() {
-    int empt_weight, empt_weight_moment, num_front_seat, front_moment_arm, num_rear_seat, rear_moment_arm,
+    double empt_weight, empt_weight_moment, front_moment_arm, rear_moment_arm, front_seat_weight, rear_seat_weight,
         gal_usable_fuel, usable_fuel_weight, fuel_moment_arm, baggage_moment_arm, baggage_weight;
-    int front_seat_weight, rear_seat_weight;
+    int num_front_seat, num_rear_seat;
 
     // General Info
     std::cout << "Please input the airplane emtpy weight: " << std::endl;
@@ -23,7 +24,7 @@ int main() {
     std::cin >> num_front_seat;
 
     for (int i = 0; i < num_front_seat; i++) {
-        int pass_weight;
+        double pass_weight;
         std::cout << "Enter weight of passenger " << i+1 << ": " << std::endl;
         std::cin >> pass_weight;
         front_seat_weight = front_seat_weight + pass_weight;
@@ -37,7 +38,7 @@ int main() {
     std::cin >> num_rear_seat;
 
     for (int i = 0; i < num_rear_seat; i++) {
-        int pass_weight;
+        double pass_weight;
         std::cout << "Enter weight of passenger " << i+1 << ": " << std::endl;
         std::cin >> pass_weight;
         rear_seat_weight = rear_seat_weight + pass_weight;
@@ -61,15 +62,29 @@ int main() {
     std::cin >> baggage_moment_arm;
 
     // Moments & Total Weight
-    int front_moment, rear_moment, fuel_moment, baggage_moment;
+    double front_moment, rear_moment, fuel_moment, baggage_moment;
     front_moment = moment_func(front_moment_arm, front_seat_weight);
     rear_moment = moment_func(rear_moment_arm, rear_seat_weight);
     fuel_moment = moment_func(fuel_moment_arm, usable_fuel_weight);
     baggage_moment = moment_func(baggage_moment_arm, baggage_weight);
 
-    int total_weight = front_seat_weight + rear_seat_weight + usable_fuel_weight + baggage_weight;
+    double moment_sum = front_moment + rear_moment + fuel_moment + baggage_moment + empt_weight_moment;
+    double total_weight = empt_weight + front_seat_weight + rear_seat_weight + usable_fuel_weight + baggage_weight;
 
     // Check if design limits are met. INCOMPLETE
+    double center_of_gravity = moment_sum/total_weight;
+
+    // Was here for checking an issue; fixed.
+    // std::cout << moment_sum << ", " << total_weight << std::endl; 
+    // std::cout << center_of_gravity << std::endl;
+
+    if (center_of_gravity < 82.1) {
+
+    }
+    else if (center_of_gravity > 84.7) {
+
+    }
+
     if (total_weight > 2950) {
 
     }
