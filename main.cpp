@@ -1,18 +1,13 @@
 #include <iostream>
 #include <array>
+#include "plane.cpp"
 
-double moment_func (int arm, int weight) {
-    // Function that determines the moment of a given part of the plane.
-    double moment = 0;
-    moment = arm*weight;
-    return moment;
-}
-
-int main() {
-    double empt_weight, empt_weight_moment, front_moment_arm, rear_moment_arm, front_seat_weight, rear_seat_weight,
+double empt_weight, empt_weight_moment, front_moment_arm, rear_moment_arm, front_seat_weight, rear_seat_weight,
         gal_usable_fuel, usable_fuel_weight, fuel_moment_arm, baggage_moment_arm, baggage_weight;
-    int num_front_seat, num_rear_seat;
+int num_front_seat, num_rear_seat;
 
+void get_info() {
+    // Get the information from the user about the plane. Stores it in global variables for later use.
     // General Info
     std::cout << "Please input the airplane emtpy weight: " << std::endl;
     std::cin >> empt_weight;
@@ -60,6 +55,17 @@ int main() {
     std::cin >> baggage_weight;
     std::cout << "Please input the baggage moment arm: " << std::endl;
     std::cin >> baggage_moment_arm;
+}
+
+double moment_func (double arm, double weight) {
+    // Function that determines the moment of a given part of the plane.
+    double moment = 0;
+    moment = arm*weight;
+    return moment;
+}
+
+int main() {
+    get_info();
 
     // Moments & Total Weight
     double front_moment, rear_moment, fuel_moment, baggage_moment;
@@ -161,6 +167,12 @@ int main() {
         }
 
     }
+
+    // **QUESTION 2** Containers
+    // First creates the base values which contains the distance between destinations. Then creates a container to hold
+    // these values. 
+    int PHL = 160, ORD = 640, EWR = 220;
+    int SCE[3] = {PHL, ORD, EWR};
 
     return 0;
 }
