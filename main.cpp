@@ -1,6 +1,7 @@
 #include <iostream>
 #include <array>
-#include "plane.cpp"
+#include "plane.h"
+#include "pilot.h"
 
 double empt_weight, empt_weight_moment, front_moment_arm, rear_moment_arm, front_seat_weight, rear_seat_weight,
         gal_usable_fuel, usable_fuel_weight, fuel_moment_arm, baggage_moment_arm, baggage_weight;
