@@ -5,4 +5,8 @@ Determines if plane is within flight limitations. If not, it attempts to create 
 
 Solution currently works. Tested a fuel amount (231lbs) that would put the plane overweight, then the center of gravity would be less than the allowable.
 
-Going to add function to deal with center of gravity/max weight to help readability and formatting.
+## Question 2
+Basic containers that should work. 
+
+## Question 3 & 4
+Plane class. Currently not functional, need to spend time on the constructor and calling the function in the main file.
