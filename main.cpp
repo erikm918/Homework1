@@ -1,5 +1,6 @@
 #include <iostream>
 #include <array>
+#include <vector>
 #include "plane.h"
 #include "pilot.h"
 
@@ -172,8 +173,9 @@ int main() {
     // **QUESTION 2** Containers
     // First creates the base values which contains the distance between destinations. Then creates a container to hold
     // these values. 
-    int PHL = 160, ORD = 640, EWR = 220;
-    int SCE[3] = {PHL, ORD, EWR};
+    // int PHL = 160, ORD = 640, EWR = 220, SCE = 0;
+    // std::vector<int> locations{PHL, ORD, EWR, SCE};
+    // std::vector<int> from_to;
 
     return 0;
 }
