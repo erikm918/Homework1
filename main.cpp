@@ -9,7 +9,7 @@
 using namespace std;
 
 int main() {
-    auto plane_info = get_info();
+    Basic_Info plane_info = get_info();
 
     // Moments & Total Weight
     array<double, 4> plane_moments;
@@ -37,7 +37,20 @@ int main() {
     weight_limit(plane_moments, plane_info.usable_fuel_weight, plane_info.fuel_moment_arm, total_weight);
 
     center_of_gravity_limit(plane_moments, plane_info.usable_fuel_weight, plane_info.fuel_moment_arm,
-                            total_weight, center_of_gravity);
+                            total_weight, center_of_gravity); 
+
+    Plane plane1("SCE", "ORD");
+
+    // Sets the plane's velocity and chosen time step for the operate function.
+    plane1.set_vel(450);
+    double dt = 30;
+    int max_iterations = 1042;
+    // cout << plane1.get_vel() << endl;
+
+    for (int i = 0; i <= max_iterations; i++) {
+        plane1.operate(dt);
+        cout << "Time: " << dt*i << " seconds. Position: " << plane1.get_pos() << " miles." << endl; 
+    }
 
     return 0;
 }

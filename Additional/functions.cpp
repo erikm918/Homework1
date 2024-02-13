@@ -5,13 +5,7 @@
 #include "functions.h"
 using namespace std;
 
-auto get_info() {
-    struct Basic_Info {
-        double empt_weight, empt_weight_moment, front_moment_arm, rear_moment_arm, front_seat_weight, rear_seat_weight, 
-            gal_usable_fuel, usable_fuel_weight, fuel_moment_arm, baggage_moment_arm, baggage_weight;
-        int num_front_seat, num_rear_seat;  
-    };
-    
+Basic_Info get_info() {
     Basic_Info data;
 
     // Get the information from the user about the plane. Stores it in global variables for later use.
@@ -72,11 +66,7 @@ double moment_func (double arm, double weight) {
     return moment;
 }
 
-auto weight_limit(array<double, 4> moments, double usable_fuel_weight, double fuel_moment_arm, double total_weight) {
-    struct Data{
-        double center_of_gravity, usable_fuel_weight, total_weight;
-    };
-
+Data weight_limit(array<double, 4> moments, double usable_fuel_weight, double fuel_moment_arm, double total_weight) {
     Data resulting_data;
     
     double sum_of_non_fuel_moments;
@@ -112,13 +102,8 @@ auto weight_limit(array<double, 4> moments, double usable_fuel_weight, double fu
     return resulting_data;
 }
 
-auto center_of_gravity_limit(array<double, 4> moments, double usable_fuel_weight, double fuel_moment_arm,
+Data center_of_gravity_limit(array<double, 4> moments, double usable_fuel_weight, double fuel_moment_arm,
                              double total_weight, double center_of_gravity) {
-
-    struct Data{
-        double center_of_gravity, usable_fuel_weight, total_weight;
-    };
-
     Data resulting_data;
 
     double sum_of_non_fuel_moments;

@@ -1,10 +1,10 @@
 #ifndef PLANE
 #define PLANE
 
-// #include <iostream>
-// #include <string>
-// #include <vector>
-// #include <map>
+#include <iostream>
+#include <string>
+#include <vector>
+#include <map>
 using namespace std;
 
 class Plane {
@@ -27,15 +27,9 @@ class Plane {
 
         double assign_distance(string from, string to);
 
-        Plane (std::string from, std::string to) {
-            origin = from, destination = to;
-            assign_distance(from, to);
+        Plane (string from, string to);
 
-
-            // std::cout << "Plane created at " << &Plane << std::endl;
-        }
-
-        ~Plane() {cout << "Plane Destroyed" << endl;}
+        ~Plane();
 };
 
 #endif
