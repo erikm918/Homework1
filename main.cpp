@@ -3,13 +3,14 @@
 #include <vector>
 #include <map>
 #include <string>
+#include <memory>
 #include "Additional/plane.h"
 #include "Additional/pilot.h"
 #include "Additional/functions.h"
 using namespace std;
 
 int main() {
-    Basic_Info plane_info = get_info();
+    /* Basic_Info plane_info = get_info();
 
     // Moments & Total Weight
     array<double, 4> plane_moments;
@@ -37,20 +38,61 @@ int main() {
     weight_limit(plane_moments, plane_info.usable_fuel_weight, plane_info.fuel_moment_arm, total_weight);
 
     center_of_gravity_limit(plane_moments, plane_info.usable_fuel_weight, plane_info.fuel_moment_arm,
-                            total_weight, center_of_gravity); 
+                            total_weight, center_of_gravity);  */
 
-    Plane plane1("SCE", "ORD");
+    Plane plane1("SCE", "PHL");
 
     // Sets the plane's velocity and chosen time step for the operate function.
-    plane1.set_vel(450);
+    double speed = 450;
     double dt = 30;
     int max_iterations = 1042;
-    // cout << plane1.get_vel() << endl;
+    plane1.set_vel(speed);
+
+    // for (int i = 0; i <= max_iterations; i++) {
+    //     plane1.operate(dt);
+    //     cout << "Time: " << dt*i << " seconds. Position: " << plane1.get_pos() << " miles." << endl; 
+    //     std::cout << plane1.get_atSCE() << std::endl;
+    // } 
+
+    Pilot pilot1("Alpha");
+    Pilot pilot2("Bravo");
+
+    Plane plane2("SCE", "PHL");
+    plane2.set_vel(speed);
+
+    pilot1.myPlane = &plane2;
+    pilot2.myPlane = 0;
+
+    cout << "Pilot " << pilot1.get_name() << " with memory address " << &pilot1 
+         << " is in control of the plane with memory address " << pilot1.myPlane << endl;
+
+    cout << "Pilot " << pilot2.get_name() << " with memory address " << &pilot2 
+         << " is in control of the plane with memory address " << pilot2.myPlane << endl;
 
     for (int i = 0; i <= max_iterations; i++) {
-        plane1.operate(dt);
-        cout << "Time: " << dt*i << " seconds. Position: " << plane1.get_pos() << " miles." << endl; 
+        plane2.operate(dt);
+
+        if (plane2.get_atSCE() && pilot1.myPlane) {
+            cout << "The plane " << &plane2 << " is at SCE." << endl;
+            
+            pilot2.myPlane = &plane2;
+            pilot1.myPlane = 0;
+
+            cout << "Pilot " << pilot2.get_name() << " is in control of plane " << pilot2.myPlane << endl;
+            cout << "Pilot " << pilot1.get_name() << " is in control of plane " << pilot1.myPlane << endl;
+        }
+        else if (plane2.get_atSCE() && pilot2.myPlane && !pilot1.myPlane) {
+            cout << "The plane " << &plane2 << " is at SCE." << endl;
+            
+            pilot1.myPlane = &plane2;
+            pilot2.myPlane = 0;
+
+            cout << "Pilot " << pilot1.get_name() << " is in control of plane " << pilot1.myPlane << endl;
+            cout << "Pilot " << pilot2.get_name() << " is in control of plane " << pilot2.myPlane << endl;
+        }
     }
+
+    delete pilot1.myPlane, pilot2.myPlane;
 
     return 0;
 }

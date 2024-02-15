@@ -2,7 +2,6 @@
 #define FUNC
 
 #include <array>
-#include <vector>
 using namespace std;
 
 struct Basic_Info {

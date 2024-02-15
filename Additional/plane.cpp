@@ -11,7 +11,7 @@ Plane::Plane(string from, string to) {
     at_SCE = 0;
     pos = 0;
 
-    // cout << "Plane created at " << &Plane << endl;
+    cout << "Plane created at: " << this << endl;
 }
 
 Plane::~Plane() {cout << "Plane Destroyed" << endl;}
@@ -31,14 +31,16 @@ void Plane::operate(double dt) {
     else if (destination == "SCE") {
         at_SCE = 1;
 
-        string new_origin = destination; 
-        string new_destination = origin;
+        string new_origin = get_origin();
+        string new_destination = get_destination();
+
         destination = new_origin, origin = new_destination;
         pos = 0;
     }
     else {
-        string new_origin = destination;
-        string new_destination = origin;
+        string new_origin = get_origin();
+        string new_destination = get_destination();
+
         destination = new_origin, origin = new_destination;
         pos = 0;
     }
