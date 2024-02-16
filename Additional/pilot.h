@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <memory>
 #include "plane.h"
 using namespace std;
 
@@ -11,7 +12,11 @@ class Pilot {
         string name;
 
     public:
+        // Old style pointer
         Plane* myPlane = (Plane*)malloc(sizeof(Plane));
+
+        // New style pointer
+        std::shared_ptr<Plane> myPlane_new_style;
 
         Pilot(string pilot_name);
         ~Pilot();

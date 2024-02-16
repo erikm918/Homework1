@@ -3,9 +3,6 @@
 
 #include <iostream>
 #include <string>
-#include <vector>
-#include <map>
-using namespace std;
 
 class Plane {
     private:
@@ -25,9 +22,9 @@ class Plane {
 
         void operate (double dt);
 
-        double assign_distance(string from, string to);
+        double assign_distance(std::string from, std::string to);
 
-        Plane (string from, string to);
+        Plane (std::string from, std::string to);
 
         ~Plane();
 };

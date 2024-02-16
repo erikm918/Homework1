@@ -21,10 +21,13 @@ Basic_Info get_info();
 double moment_func (double arm, double weight);
 
 // Determines if weight requirements are met.
-Data weight_limit(array<double, 4> moments, double usable_fuel_weight, double fuel_moment_arm, double total_weight);
+Data weight_limit(std::array<double, 4> moments, double usable_fuel_weight, double fuel_moment_arm, 
+                  double total_weight);
+
+bool is_center_of_gravity(double center_of_gravity);
 
 // Determines if the center of gravity requirements are met.
-Data center_of_gravity_limit(array<double, 4> moments, double usable_fuel_weight, double fuel_moment_arm,
+Data center_of_gravity_limit(std::array<double, 4> moments, double usable_fuel_weight, double fuel_moment_arm,
                              double total_weight, double center_of_gravity);
 
 #endif 
