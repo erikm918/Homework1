@@ -12,6 +12,8 @@ Containers consist of a map that takes strings that are then associated with the
 ## Question 3 & 4
 Plane class.
 
+Operate function includes the correct conversion of units to ensure that all calculations are correct.
+
 ## Question 5
 Loop to run operate function for the called plane.
 
