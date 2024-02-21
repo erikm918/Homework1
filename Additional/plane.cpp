@@ -1,5 +1,7 @@
 #include <iostream>
 #include <map>
+#include <string>
+#include <vector>
 #include "plane.h"
 
 Plane::Plane(std::string from, std::string to) {
@@ -10,7 +12,7 @@ Plane::Plane(std::string from, std::string to) {
     at_SCE = 0;
     pos = 0;
 
-    std::cout << "Plane created at: " << this << std::endl;
+    std::cout << "Plane created at: " << this << "\n" << std::endl;
 }
 
 Plane::~Plane() {std::cout << "Plane Destroyed" << std::endl;}
@@ -61,4 +63,3 @@ double Plane::assign_distance(std::string from, std::string to) {
     distance = from_to[0] + from_to[1];
     return distance;
 }
-

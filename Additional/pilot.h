@@ -1,7 +1,6 @@
 #ifndef PILOT
 #define PILOT
 
-#include <iostream>
 #include <string>
 #include <memory>
 #include "plane.h"
@@ -13,7 +12,7 @@ class Pilot {
 
     public:
         // Old style pointer
-        Plane* myPlane = (Plane*)malloc(sizeof(Plane));
+        Plane* myPlane;
 
         // New style pointer
         std::shared_ptr<Plane> myPlane_new_style;

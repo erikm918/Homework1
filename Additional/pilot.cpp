@@ -1,12 +1,12 @@
 #include <iostream>
-#include <memory>
 #include <string>
+#include "pilot.h"
 #include "pilot.h"
 
 
 Pilot::Pilot(string pilot_name) {
     std::cout << "Pilot Name: " << pilot_name << " \nMemory Address: " << this
-         << "\nPilot is at the gate and ready to board." << std::endl;
+         << "\nPilot is at the gate and ready to board." << "\n" << std::endl;
 
     name = pilot_name;
 } 
